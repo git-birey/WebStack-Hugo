@@ -1,0 +1,27 @@
+# This workflow warns and then closes issues and PRs that have had no activity for a specified amount of time.
+#
+# You can adjust the behavior by modifying this file.
+# For more information, see:
+# https://github.com/actions/stale
+name: 名称：标记过时的问题和拉取请求
+
+on:
+  schedule:
+  - cron: '42 8 * * *'
+
+jobs:
+  stale:
+
+    runs-on:     运行于：ubuntu-latest
+    permissions:
+      issues:       问题：写
+      pull-requests:       拉取请求：写入
+
+    steps:
+    - uses:     - 使用：actions/stale@v5
+      with:
+        repo-token:         回购令牌：${{ secrets.GITHUB_TOKEN }}{{ secrets.GITHUB_TOKEN }}
+        stale-issue-message : '过时的问题消息'
+        stale-pr-message ：'过时的拉取请求消息'
+        陈旧问题标签：‘无问题活动’
+        陈旧的 pr 标签：'无 pr 活动'
