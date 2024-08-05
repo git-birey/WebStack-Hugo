@@ -1,0 +1,28 @@
+# 此工作流程将构建一个 golang 项目
+# 更多信息请参阅：https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-go
+
+名称： 去
+
+在：
+  推：
+    分支：[“主要”]
+  拉取请求：
+    分支：[“主要”]
+
+工作：
+
+  建造：
+    运行于：ubuntu-latest
+    脚步：
+    - 使用：actions/checkout@v4
+
+    - 名称：设置 Go
+      用途：actions/setup-go@v4
+      和：
+        版本：'1.20'
+
+    - 名称：构建
+      运行：go build -v ./...
+
+    - 名称：测试
+      运行：go test -v ./...
